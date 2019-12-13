@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../css/score.css">
+  <title></title>
+</head>
+<body>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script>
+
+    var users = new Array();
+
+    function init() {
+      var url = location.href;
+      var tryNum = url.split("=")[1];
+      var userName = $("#userName").val();
+      console.log(tryNum[1]);
+      users.push({name: userName, tryNum: tryNum});
+    }
+  </script>
+  <h1>점수표</h1>
+  <table>
+    <tr>
+      <td class="grade">등수</td>
+      <td class="name">이름</td>
+      <td class="score">시도횟수</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  <div class="scoreInput">
+    이름 입력: <input type="text" id="userName">
+    <input type="button" value="등록" onclick="init()">
+  </div>
+</body>
+</html>
