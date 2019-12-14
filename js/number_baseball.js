@@ -14,27 +14,34 @@ form.append(button);
 button.textContent='입력';
 
 var numbers = [];
+var resultNumbers = [];
 var strikeNum = 0;
 var ballNum = 0;
 
-for(var i=0; i<4; i++){
-	numbers.push(Math.floor(Math.random()*9)+1);
+for(var i=1; i<=9; i++){
+	numbers.push(i);
 }
 
-console.log(numbers);
+for(var i=0; i<4; i++){
+	var randomNum = Math.floor(Math.random()*(9-i));
+	var pickNum = numbers.splice(randomNum,1)[0];
+	resultNumbers.push(pickNum);
+}
+
+console.log(resultNumbers);
 
 form.addEventListener('submit',function(event){
 	event.preventDefault();
-	if(inputForm.value === numbers.join('')){
+	if(inputForm.value === resultNumbers.join('')){
 		result.textContent = '홈런';
 	}else{
 		for(var i=0;i<4;i++){
 			var inputArray = inputForm.value.split('');
-			if(Number(inputArray[i]) === numbers[i]){
+			if(resultNumbers[i] === Number(inputArray[i])){
 				strikeNum++;
 			} else {
-				console.log(numbers.join('').indexOf(inputArray[i]));
-				if(numbers.join('').indexOf(inputArray[i])>=0){
+				console.log(resultNumbers.join('').indexOf(inputArray[i]));
+				if(resultNumbers.join('').indexOf(inputArray[i])>=0){
 					ballNum++;
 				}
 			}
