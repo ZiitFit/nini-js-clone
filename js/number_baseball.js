@@ -40,8 +40,8 @@ form.addEventListener('submit',function(event){
 			if(resultNumbers[i] === Number(inputArray[i])){
 				strikeNum++;
 			} else {
-				console.log(resultNumbers.join('').indexOf(inputArray[i]));
-				if(resultNumbers.join('').indexOf(inputArray[i])>=0){
+				console.log(inputForm.value.indexOf(resultNumbers[i]));
+				if(inputForm.value.indexOf(resultNumbers[i])>=0){
 					ballNum++;
 				}
 			}
