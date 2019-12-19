@@ -59,8 +59,6 @@ function selected(event){
 
         //왼쪽 대각선 확인
         checkedNum = 0;
-        //0 3,/ 1,2 ,/ 2,1 /3,0
-        //0 2/1,1/2,0
         for (var i = 0; i < tableNum; i++) {
             j = tableNum-1-i
             if(cells[i][j].textContent === turn){
@@ -69,7 +67,7 @@ function selected(event){
             }
         }
     }else{
-        alert("빈칸이 아닙니다");
+        alert('빈칸이 아닙니다');
     }
 }
 
