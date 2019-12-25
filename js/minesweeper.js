@@ -31,9 +31,17 @@ document.querySelector('#play').addEventListener('click',function(){
                 var tbody = e.currentTarget.parentNode.parentNode
                 var col = Array.prototype.indexOf.call(tr.children,e.currentTarget);
                 var row = Array.prototype.indexOf.call(tbody.children,tr);
-                e.currentTarget.textContent = "!";
-                dataset[col][row]="!";
-                console.log(dataset);
+                if(e.currentTarget.textContent === '' || e.currentTarget.textContent === 'X'){
+                    e.currentTarget.textContent = '!';
+                } else if(e.currentTarget.textContent === '!'){
+                    e.currentTarget.textContent = '?';
+                } else if(e.currentTarget.textContent === '?'){
+                    if(dataset[row][col] === 1){
+                        e.currentTarget.textContent = '';
+                    } else{
+                        e.currentTarget.textContent = 'X';
+                    }
+                }
             });
             tr.appendChild(td);
             dataset[i].push(1);
