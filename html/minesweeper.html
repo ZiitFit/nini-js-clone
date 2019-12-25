@@ -7,7 +7,8 @@
     <title>지뢰찾기</title>
     <style> 
         table{border-collapse:collapse}
-        tbody td{width:20px;height:20px;line-height:20px;text-align:center;border:1px solid #000}
+        tbody td{width:20px;height:20px;background-color:#444;line-height:20px;text-align:center;border:1px solid #000}
+        tbody td.opened{background-color:#fff}
     </style>
 </head>
 <body>
@@ -21,6 +22,53 @@
         </thead>
         <tbody></tbody>
     </table>
+    <p id="result"></p>
     <script src='../js/minesweeper.js'></script>
+    <!--
+        스코프 어떤 변수들에 접근할 수 있는지를 정의
+        전역 스코프: 함수 바깥에 정의되어 어디서나 접근 가능한 변수 범위
+        지역 스코프: 특정 부분에서만 사용이 가능한 변수
+
+        스코프 체인: 스코프들의 상하관계
+        렉시컬 스코프: 함수를 어디서 호출하는지가 아니라 어디에 선언하였는지에 따라 결정
+
+        var x = 1;
+
+        function foo() {
+            var x = 10;
+            bar();
+        }
+
+        function bar() {
+            console.log(x);
+        }
+
+        foo(); // ?
+        bar(); // ?
+    -->
+    <!--
+        클로저
+        for (var i = 0; i =< 100; i++) { // 0.00000000001초에 다 돌음
+            setTimeout(function(){
+                console.log(i); n초 뒤에 실행됬을 때 이미 100된 i를 호출
+            },i*1000);
+        }
+        해결방법
+        for (var i = 0; i =< 100; i++) { 
+            function closure(j){ //j(매개변수)에 값을 저장 
+                setTimeout(function(){
+                    console.log(j); 
+                },j*1000);
+            } 
+            closure(i);
+            
+            위의 함수 즉시실행 함수로 바꿈
+            (function(j){
+                setTimeout(function(){
+                    console.log(j); 
+                },j*1000);
+            })(i);
+        }
+    -->
 </body>
 </html>
