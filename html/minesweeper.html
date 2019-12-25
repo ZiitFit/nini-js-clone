@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>지뢰찾기</title>
+    <style> 
+        table{border-collapse:collapse}
+        tbody td{width:20px;height:20px;line-height:20px;text-align:center;border:1px solid #000}
+    </style>
+</head>
+<body>
+    <input type="number" id="cols" value="10"></input>
+    <input type="number" id="rows" value="10"></input>
+    <input type="number" id="mines" value="20"></input>
+    <button id="play">실행</button>
+    <table>
+        <thead>
+            <td></td>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script src='../js/minesweeper.js'></script>
+</body>
+</html>
