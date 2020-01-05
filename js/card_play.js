@@ -1,17 +1,27 @@
 var width = 4;
 var height = 3;
 var colors = ['red','red','orange','orange','green','green','yellow','yellow','white','white','pink','pink'];
+var colorsBackup = colors.slice();
+/*
+참조 얇은 복사 아닌 깊은 복사방법
+1. var colorsBackup = colors.slice(); //1단계만 복사 나머지는 참조
+2. Object.keys(colors).forEach(function(key){
+    colorsBackup[key] = colors[key];
+}) //1단계만 복사 나머지는 참조
+2. var colorsBackup = JSON.parse(JSON.stringify(colors));
+*/
 var shuffle = [];
 var clickFlag = true;
-var clickCard = [];
+var clickCard = []; 
 var completeCard = [];
+var startTime;
 
-while(colors.length > 0){
-    var color = colors.splice(Math.floor(Math.random()*colors.length),1)[0];
-    shuffle.push(color);
+function colorShuffle(){
+    while(colorsBackup.length > 0){
+        shuffle = shuffle.concat(colorsBackup.splice(Math.floor(Math.random()*colorsBackup.length),1)[0]);
+    }
 }
 
-cardSetting(width,height);
 function cardSetting(width,height){
     clickFlag = false;
     for (let index = 0; index < width*height; index++) {
@@ -37,6 +47,16 @@ function cardSetting(width,height){
                         clickCard[1].querySelector('.card_back').style.backgroundColor){
                             completeCard.push(clickCard[0]);
                             completeCard.push(clickCard[1]);
+                            if(completeCard.length == width*height){
+                                var endTime = new Date();
+                                alert('축하합니다!'+(startTime-endTime)/1000+'초 걸렸습니다!');
+                                document.querySelector('#wrapper').innerHTML='';
+                                colorsBackup = colors;
+                                completeCard = [];
+                                startTime;
+                                colorShuffle();
+                                cardSetting(width,height);
+                            }
                             clickCard = []
                         } else {
                             clickFlag = false;
@@ -51,7 +71,7 @@ function cardSetting(width,height){
                 }
             });
         })(card);
-        document.body.append(card);
+        document.querySelector('#wrapper').append(card);
     }
     document.querySelectorAll('.card').forEach(function(card,index){
         setTimeout(function(){
@@ -64,5 +84,9 @@ function cardSetting(width,height){
             card.classList.remove('flipped');
         })
         clickFlag = true;
+        startTime = new Date();
     },5000)
 }
+
+colorShuffle();
+cardSetting(width,height);
