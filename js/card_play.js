@@ -12,13 +12,14 @@ var colorsBackup = colors.slice();
 */
 var shuffle = [];
 var clickFlag = true;
-var clickCard = []; 
+var clickCard = [];
 var completeCard = [];
 var startTime;
 
 function colorShuffle(){
     while(colorsBackup.length > 0){
-        shuffle = shuffle.concat(colorsBackup.splice(Math.floor(Math.random()*colorsBackup.length),1)[0]);
+        var color = colorsBackup.splice(Math.floor(Math.random()*colorsBackup.length),1)[0];
+        shuffle.push(color);
     }
 }
 
@@ -52,6 +53,7 @@ function cardSetting(width,height){
                                 alert('축하합니다!'+(startTime-endTime)/1000+'초 걸렸습니다!');
                                 document.querySelector('#wrapper').innerHTML='';
                                 colorsBackup = colors;
+                                shuffle = [];
                                 completeCard = [];
                                 startTime;
                                 colorShuffle();
