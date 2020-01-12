@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf_8" />
+    <title>자스스톤</title>
+    <style>
+        #my, #rival {
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 50px;
+        }
+        .turn {
+            border: 1px solid blue;
+        }
+        #rival {
+            vertical-align: bottom;
+        }
+        #my_deck, #rival_deck {
+            display: inline-block;
+            vertical-align: top;
+            width: 300px;
+            background: silver;
+        }
+        #rival_deck, #rival_hero, #rival_cards, #my_cards, #my_deck, #my_hero {
+            text-align: center;
+        }
+        .card {
+            width: 75px;
+            height: 120px;
+            display: inline-block;
+            position: relative;
+            border: 1px solid black;
+            margin-bottom: 10px;
+            background: white;
+            box-sizing: border-box;
+        }
+        .card_name {
+            font-size: 14px;
+            text-align: center;
+        }
+        .card_att, .card_hp, .card_cost {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 30px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-block;
+            position: absolute;
+            bottom: 0;
+            border: 1px solid black;
+        }
+        .card_cost {
+            bottom: auto;
+            top: 0;
+            left: 0;
+            background-color: blue;
+            color: white;
+        }
+        .card_att {
+            left: 0;
+            background-color: yellow;
+        }
+        .card_hp {
+            right: 0;
+            background-color: red;
+            color: white;
+        }
+        .card_hidden {
+            display: none;
+        }
+        .card_selected {
+            border: 2px solid red;
+        }
+        .card_turnover {
+            background: gray;
+        }
+        #turn_btn {
+            float: right;
+            position: relative;
+            top: -23px;
+        }
+    </style>
+</head>
+<body>
+<div id="rival"> 
+    <div id="rival_cost">코스트:<span>10</span></div>
+    <div id="rival_hero"></div>
+    <div id="rival_cards" style="height:140px">
+    </div>
+</div>
+<div id="rival_deck"></div>
+<hr />
+<button id="turn_btn">턴넘기기</button>
+<div id="my" class="turn">
+    <div id="my_cards" style="height:140px;">
+    </div>
+    <div id="my_hero"></div>
+    <div id="my_cost">코스트:<span>10</span></div>
+</div>
+<div id="my_deck"></div>
+<div class="card_hidden">
+    <div class="card">
+        <div class="card_cost"></div>
+        <div class="card_att"></div>
+        <div class="card_hp"></div>
+    </div>
+</div>
+<script type="text/javascript" src="../js/jsstone.js"></script>
+</body>
+</html>
